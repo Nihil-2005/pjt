@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Synthetic Nmap XML report for demo purposes.
+  Command: nmap -sV -sC -oX juice_shop_nmap.xml juice-shop
+  Generated to satisfy the "Nmap" scanner requirement from the slide.
+-->
+<nmaprun scanner="nmap"
+         args="nmap -sV -sC -oX juice_shop_nmap.xml juice-shop"
+         start="1754035200"
+         version="7.94"
+         xmloutputversion="1.05">
+
+  <host starttime="1754035200" endtime="1754035260">
+    <status state="up" reason="echo-reply"/>
+    <address addr="172.18.0.10" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="juice-shop" type="PTR"/>
+    </hostnames>
+
+    <ports>
+
+      <!-- Main app port — plain HTTP (risky: CWE-200) -->
+      <port protocol="tcp" portid="3000">
+        <state state="open" reason="syn-ack"/>
+        <service name="http" product="Node.js Express" version="4.18.2"
+                 extrainfo="OWASP Juice Shop" tunnel="" method="probed"/>
+        <script id="http-title">
+          <output>OWASP Juice Shop</output>
+        </script>
+      </port>
+
+      <!-- MySQL database exposed (risky: CWE-284 medium) -->
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack"/>
+        <service name="mysql" product="MySQL" version="8.0.33"
+                 extrainfo="MySQL Community Server" method="probed"/>
+        <script id="mysql-info">
+          <output>Protocol: 10, Version: 8.0.33</output>
+        </script>
+      </port>
+
+      <!-- Redis cache exposed without auth (risky: CWE-284 medium) -->
+      <port protocol="tcp" portid="6379">
+        <state state="open" reason="syn-ack"/>
+        <service name="redis" product="Redis" version="7.0.11"
+                 extrainfo="Redis key-value store" method="probed"/>
+      </port>
+
+      <!-- SSH — standard, low risk -->
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack"/>
+        <service name="ssh" product="OpenSSH" version="9.3p1"
+                 extrainfo="Ubuntu Linux; protocol 2.0" method="probed"/>
+      </port>
+
+      <!-- FTP — cleartext auth (risky: CWE-319 low) -->
+      <port protocol="tcp" portid="21">
+        <state state="open" reason="syn-ack"/>
+        <service name="ftp" product="vsftpd" version="3.0.5"
+                 method="probed"/>
+        <script id="ftp-anon">
+          <output>Anonymous FTP login allowed (FTP code 230)</output>
+        </script>
+      </port>
+
+      <!-- Elasticsearch API exposed (risky: CWE-284 medium) -->
+      <port protocol="tcp" portid="9200">
+        <state state="open" reason="syn-ack"/>
+        <service name="elasticsearch" product="Elasticsearch"
+                 version="8.8.0" method="probed"/>
+      </port>
+
+    </ports>
+
+    <os>
+      <osmatch name="Linux 5.15" accuracy="96">
+        <osclass type="general purpose" vendor="Linux"
+                 osfamily="Linux" osgen="5.X" accuracy="96"/>
+      </osmatch>
+    </os>
+
+    <times srtt="812" rttvar="1240" to="100000"/>
+  </host>
+
+</nmaprun>

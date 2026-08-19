@@ -1,0 +1,18 @@
+# ─── Runtime ──────────────────────────────────────────────────────
+# pandas is required: satisfies the "Python/pandas" tech-stack item on the
+# slide; used in output.py for ranked CSV, analytics CSV, and score stats.
+pandas>=2.0
+
+# requests is used only by version1_defectdojo (DefectDojo REST client).
+requests>=2.31
+
+# ─── AI enrichment (optional) ─────────────────────────────────────
+# Set ANTHROPIC_API_KEY in your environment or GitHub Secrets to enable
+# Stage 4.5 AI enrichment (FP classification + smart remediation).
+# The pipeline runs fine without it — this package is not imported unless
+# the user installs it.
+# anthropic>=0.34    # uncomment if you prefer the SDK over urllib
+
+# ─── Development / testing ────────────────────────────────────────
+pytest>=8.0
+pytest-mock>=3.12

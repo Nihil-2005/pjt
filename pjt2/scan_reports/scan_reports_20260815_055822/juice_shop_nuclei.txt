@@ -1,0 +1,19 @@
+[swagger-api] [http] [info] http://juice-shop:3000/api-docs/swagger.json [paths="/api-docs/swagger.json"]
+[robots-txt-endpoint:endpoints] [http] [info] http://juice-shop:3000/robots.txt ["/ftp"]
+[security-txt] [http] [info] http://juice-shop:3000/.well-known/security.txt ["mailto:donotreply@owasp-juice.shop"]
+[x-recruiting-header] [http] [info] http://juice-shop:3000 ["/#/jobs"]
+[http-missing-security-headers:permissions-policy] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:x-permitted-cross-domain-policies] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:referrer-policy] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:cross-origin-embedder-policy] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:cross-origin-opener-policy] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:cross-origin-resource-policy] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:strict-transport-security] [http] [info] http://juice-shop:3000
+[http-missing-security-headers:content-security-policy] [http] [info] http://juice-shop:3000
+[robots-txt] [http] [info] http://juice-shop:3000/robots.txt
+[prometheus-metrics] [http] [medium] http://juice-shop:3000/metrics
+[addeventlistener-detect] [http] [info] http://juice-shop:3000
+[deprecated-feature-policy] [http] [info] http://juice-shop:3000 ["payment 'self'"]
+[owasp-juice-shop-detect] [http] [info] http://juice-shop:3000
+[fingerprinthub-web-fingerprints:qm-system] [http] [info] http://juice-shop:3000
+[tech-detect:google-font-api] [http] [info] http://juice-shop:3000

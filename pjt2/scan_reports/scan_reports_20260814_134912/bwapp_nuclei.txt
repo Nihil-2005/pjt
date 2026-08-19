@@ -1,0 +1,21 @@
+[phpinfo-files] [http] [low] http://bwapp:80/phpinfo.php ["5.5.9"] [paths="/phpinfo.php"]
+[waf-detect:apachegeneric] [http] [info] http://bwapp:80
+[mysql-info] [javascript] [info] bwapp:3306 ["Version:","Transport: tcp"]
+[tech-detect:php] [http] [info] http://bwapp:80/login.php
+[missing-cookie-samesite-strict] [http] [info] http://bwapp:80/portal.php ["PHPSESSID=slivno96fn6o4t8gmqblc03j62; path=/"]
+[tech-detect:php] [http] [info] http://bwapp:80/portal.php
+[tech-detect:php] [http] [info] http://bwapp:80
+[web-config] [http] [info] http://bwapp:80/web.config
+[robots-txt] [http] [info] http://bwapp:80/robots.txt
+[robots-txt-endpoint:endpoints] [http] [info] http://bwapp:80/robots.txt ["/admin/","/documents/","/images/","/passwords/"]
+[http-missing-security-headers:permissions-policy] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:x-permitted-cross-domain-policies] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:x-frame-options] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:x-content-type-options] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:referrer-policy] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:cross-origin-embedder-policy] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:cross-origin-opener-policy] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:cross-origin-resource-policy] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:strict-transport-security] [http] [info] http://bwapp:80/login.php
+[http-missing-security-headers:content-security-policy] [http] [info] http://bwapp:80/login.php
+[php-eol:version] [http] [info] http://bwapp:80 ["5.5.9"]

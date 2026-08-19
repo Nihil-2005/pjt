@@ -1,0 +1,18 @@
+[cookies-without-secure] [javascript] [info] nodegoat:4000 ["connect","sid"]
+[tech-detect:font-awesome] [http] [info] http://nodegoat:4000/login
+[tech-detect:bootstrap] [http] [info] http://nodegoat:4000/login
+[tech-detect:express] [http] [info] http://nodegoat:4000/login
+[missing-cookie-samesite-strict] [http] [info] http://nodegoat:4000 ["connect.sid=s%3A_jPCqastjAt8wgKAU3ft6YWb81gNKMOW.%2FjY8Dffi6mU3nzBGTgwZ1UveUAT6%2BKaMvt2U7n%2FMMwQ; Path=/; HttpOnly"]
+[tech-detect:express] [http] [info] http://nodegoat:4000
+[form-detection] [http] [info] http://nodegoat:4000/login
+[options-method] [http] [info] http://nodegoat:4000 ["GET,HEAD"]
+[http-missing-security-headers:cross-origin-embedder-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:cross-origin-opener-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:cross-origin-resource-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:content-security-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:permissions-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:referrer-policy] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:strict-transport-security] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:x-frame-options] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:x-content-type-options] [http] [info] http://nodegoat:4000/login
+[http-missing-security-headers:x-permitted-cross-domain-policies] [http] [info] http://nodegoat:4000/login

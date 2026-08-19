@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+
+# Pipeline outputs (generated — do not commit)
+outputs/
+logs/
+
+# Threat intel cache (regenerated on first run)
+.threat_cache/
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# Secrets / environment
+.env
+.env.*
+*.key
+
+# IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Scan reports with real data (keep sample_reports/ only)
+scan_reports/

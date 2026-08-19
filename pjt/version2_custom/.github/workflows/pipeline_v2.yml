@@ -1,0 +1,110 @@
+name: risk-pipeline-v2
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run every Monday at 03:00 UTC
+    - cron: "0 3 * * 1"
+  push:
+    paths:
+      - "core/**"
+      - "sample_reports/**"
+      - "version2_custom/**"
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  # ── Job 1: verify vendored core is in sync ─────────────────────
+  check-core-sync:
+    name: Verify core copies in sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Diff root core/ vs version2_custom/core/
+        run: |
+          diff -rq \
+            --exclude='*.pyc' --exclude='__pycache__' \
+            core/ version2_custom/core/ \
+          || (echo "" && \
+              echo "ERROR: version2_custom/core/ is out of sync." && \
+              echo "       Run: make sync-core  then commit." && \
+              echo "" && exit 1)
+
+  # ── Job 2: unit tests ─────────────────────────────────────────
+  unit-tests:
+    name: Unit tests
+    needs: check-core-sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install test dependencies
+        run: pip install pandas pytest pytest-mock
+
+      - name: Run core unit tests
+        run: python -m pytest core/tests/ -v --tb=short
+
+      - name: Run v2-specific tests
+        run: |
+          if [ -d "version2_custom/tests/" ]; then
+            python -m pytest version2_custom/tests/ -v --tb=short
+          fi
+
+  # ── Job 3: pipeline run ───────────────────────────────────────
+  pipeline:
+    name: Run risk pipeline (v2)
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run v2 pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python version2_custom/run_pipeline.py \
+            --reports sample_reports \
+            --config  version2_custom/config.json \
+            --out     outputs/v2 \
+            --file-tickets \
+            --github-tickets \
+            --github-repo "$GH_REPO" \
+            --github-token "$GH_TOKEN"
+
+      - name: Show noise-reduction summary
+        if: always()
+        run: |
+          echo "=== Noise reduction metrics ==="
+          cat outputs/v2/noise_reduction.json || true
+          echo ""
+          echo "=== Top 5 actions ==="
+          head -30 outputs/v2/top_actions.md || true
+
+      - name: Upload pipeline outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-risk-outputs-${{ github.run_number }}
+          retention-days: 30
+          path: |
+            outputs/v2/ranked_findings.csv
+            outputs/v2/analytics.csv
+            outputs/v2/top_actions.md
+            outputs/v2/tickets_ready.md
+            outputs/v2/regression_report.md
+            outputs/v2/noise_reduction.json
+            outputs/v2/risk_dashboard.html

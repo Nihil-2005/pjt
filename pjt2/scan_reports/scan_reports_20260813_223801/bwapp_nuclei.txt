@@ -1,0 +1,1 @@
+[phpinfo-files] [http] [low] http://localhost:8080/phpinfo.php ["5.5.9"] [paths="/phpinfo.php"]

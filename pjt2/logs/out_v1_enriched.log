@@ -1,0 +1,19 @@
+== [1/8] INGEST & NORMALIZE ==
+  parsed 2122 raw findings from ../sample_reports
+== [2/8] DEDUPLICATION ==
+  raw=2122 unique=767 dedup%=63.85
+== [3/8] FILTERING (auditable) ==
+  active=730 quarantined=37
+== [4/8] ENRICHMENT (KEV / EPSS / NVD / exploit-db) ==
+  ! EPSS fetch failed (HTTP Error 414: URI Too Long); continuing with cache
+  enriched: {'kev': 0, 'epss': 0, 'nvd': 260, 'exploit': 0}
+== [5/8] ATTACK PATH MAPPING ==
+  15 attack paths across 3 products
+== [6/8] RISK SCORING (8-factor, explainable) ==
+== [7/8] REMEDIATION SUGGESTIONS ==
+== [8/8] RANKING & OUTPUT ==
+
+[OK] pipeline complete - outputs in ../out_v1_enriched
+   ranked_findings.csv/json · top_actions.md · tickets_ready.md · noise_reduction.json · risk_dashboard.html · history.db
+  wrote DefectDojo payloads -> ../out_v1_enriched\defectdojo_payloads.json
+  (not pushing to DefectDojo; pass --push-defectdojo to import)

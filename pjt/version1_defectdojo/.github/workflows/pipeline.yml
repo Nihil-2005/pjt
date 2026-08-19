@@ -1,0 +1,67 @@
+# Version 1 CI/CD — GitHub Actions
+#
+#  1. checkout the repo (scanner reports produced by scan.sh land in
+#     sample_reports/ or are produced on demand via the scan job)
+#  2. run the shared risk pipeline (normalize -> dedup -> filter -> enrich
+#     -> attack paths -> score -> remediate -> rank)
+#  3. push deduplicated + enriched findings to DefectDojo (dashboard)
+#  4. upload pipeline outputs (ranked CSV/JSON, dashboard HTML, metrics)
+#
+# Secrets to configure in the repo:
+#   DD_API_TOKEN   DefectDojo API token (your admin user's token)
+#   DD_BASE_URL    e.g. https://defectdojo.example.com
+name: risk-pipeline-v1
+
+on:
+  workflow_dispatch:          # manual trigger from the Actions tab
+  schedule:
+    - cron: "0 2 * * 1"       # weekly Monday 02:00
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install deps (core is stdlib-only; requests for the DD client)
+        run: |
+          python -m pip install --quiet requests
+
+      - name: Run risk pipeline (vendored core, no DefectDojo needed for outputs)
+        run: |
+          python version1_defectdojo/run_pipeline.py \
+            --reports sample_reports \
+            --config version1_defectdojo/config.json \
+            --out outputs/v1 \
+            --skip-enrich
+
+      - name: Push deduplicated + enriched findings to DefectDojo
+        if: ${{ secrets.DD_API_TOKEN != '' }}
+        env:
+          DD_API_TOKEN: ${{ secrets.DD_API_TOKEN }}
+          DD_BASE_URL: ${{ secrets.DD_BASE_URL }}
+        run: |
+          python version1_defectdojo/run_pipeline.py \
+            --reports sample_reports \
+            --config version1_defectdojo/config.json \
+            --out outputs/v1 \
+            --push-defectdojo
+
+      - name: Upload pipeline outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: v1-risk-outputs
+          path: |
+            outputs/v1/ranked_findings.csv
+            outputs/v1/ranked_findings.json
+            outputs/v1/top_actions.md
+            outputs/v1/tickets_ready.md
+            outputs/v1/noise_reduction.json
+            outputs/v1/risk_dashboard.html

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Nuclei — bwapp</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f5f5f5; }
+    h1 { color: #333; }
+    .meta { color: #666; margin-bottom: 15px; }
+    .sev { padding: 3px 8px; border-radius: 4px; margin-right: 6px; font-size: 13px; }
+    .sev-critical { background: #d32f2f; color: white; }
+    .sev-high { background: #f57c00; color: white; }
+    .sev-medium { background: #fbc02d; color: #333; }
+    .sev-low { background: #7cb342; color: white; }
+    .sev-info { background: #90a4ae; color: white; }
+    table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ddd; font-size: 13px; }
+    th { background: #2196F3; color: white; position: sticky; top: 0; }
+    tr:hover { background: #f5f5f5; }
+</style>
+</head>
+<body>
+    <h1>Nuclei — bwapp</h1>
+    <div class="meta">Generated 2026-08-14T14:03:13 · 21 findings</div>
+    <div class="meta"><span class="sev sev-low">low: 1</span> <span class="sev sev-info">info: 20</span></div>
+    <table>
+        <thead><tr><th>Severity</th><th>Name</th><th>Template</th><th>Matched At</th><th>Description</th></tr></thead>
+        <tbody>
+<tr><td>low</td><td>PHPinfo Page - Detect</td><td>phpinfo-files</td><td>http://bwapp:80/phpinfo.php</td><td>PHPinfo page was detected. The output of the phpinfo() command can reveal sensitive and detailed PHP environment information.
+</td></tr>
+<tr><td>info</td><td>WAF Detection</td><td>waf-detect</td><td>http://bwapp:80</td><td>A web application firewall was detected.</td></tr>
+<tr><td>info</td><td>MySQL Info - Enumeration</td><td>mysql-info</td><td>bwapp:3306</td><td>Connects to a MySQL server and prints information such as the protocol and version numbers
+</td></tr>
+<tr><td>info</td><td>Wappalyzer Technology Detection</td><td>tech-detect</td><td>http://bwapp:80/login.php</td><td></td></tr>
+<tr><td>info</td><td>Missing Cookie SameSite Strict</td><td>missing-cookie-samesite-strict</td><td>http://bwapp:80/portal.php</td><td>Identified cookies that lacked the samesite=strict attribute, which prevented enforcement of restrictions on cross-domain cookie transmission.
+</td></tr>
+<tr><td>info</td><td>Wappalyzer Technology Detection</td><td>tech-detect</td><td>http://bwapp:80/portal.php</td><td></td></tr>
+<tr><td>info</td><td>Wappalyzer Technology Detection</td><td>tech-detect</td><td>http://bwapp:80</td><td></td></tr>
+<tr><td>info</td><td>Web Configuration File - Detect</td><td>web-config</td><td>http://bwapp:80/web.config</td><td>Web configuration file was detected.</td></tr>
+<tr><td>info</td><td>robots.txt file</td><td>robots-txt</td><td>http://bwapp:80/robots.txt</td><td></td></tr>
+<tr><td>info</td><td>robots.txt endpoint prober</td><td>robots-txt-endpoint</td><td>http://bwapp:80/robots.txt</td><td></td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>HTTP Missing Security Headers</td><td>http-missing-security-headers</td><td>http://bwapp:80/login.php</td><td>This template searches for missing HTTP security headers. The impact of these missing headers can vary.
+</td></tr>
+<tr><td>info</td><td>PHP End-of-Life - Detect</td><td>php-eol</td><td>http://bwapp:80</td><td>Detected PHP versions that have reached End-of-Life (EOL) and no longer receive security updates.
+</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

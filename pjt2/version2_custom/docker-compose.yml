@@ -1,0 +1,18 @@
+# Version 2 — run the fully custom pipeline as a container (one-shot).
+#
+#   docker compose run --rm pipeline
+#
+# Mounts ../outputs/v2 (host) <-> /out (container) so the dashboard, CSV/JSON,
+# tickets and the SQLite db persist on the host.
+services:
+  pipeline:
+    build:
+      context: ..
+      dockerfile: version2_custom/Dockerfile
+    volumes:
+      - ../outputs/v2:/out
+    environment:
+      - GH_REPO=${GH_REPO:-}
+      - GH_TOKEN=${GH_TOKEN:-}
+      - TICKETS=${TICKETS:-file}
+    command: ["--reports", "/app/sample_reports", "--config", "config.json", "--out", "/out", "--file-tickets"]

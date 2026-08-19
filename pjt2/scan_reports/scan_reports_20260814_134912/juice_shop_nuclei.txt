@@ -1,0 +1,1 @@
+[swagger-api] [http] [info] http://juice-shop:3000/api-docs/swagger.yaml [paths="/api-docs/swagger.yaml"]

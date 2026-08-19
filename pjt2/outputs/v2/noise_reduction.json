@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-16T13:22:06",
+  "raw_findings": 2122,
+  "unique_findings": 767,
+  "quarantined": 37,
+  "final_findings": 730,
+  "dedup_pct": 63.85,
+  "noise_removed_pct": 65.6,
+  "dedup_by_pass": {
+    "cve": 1311,
+    "endpoint": 37,
+    "title": 7
+  },
+  "quarantine_by_rule": {
+    "severity<=max(info)": 22,
+    "fp_pattern:content security policy": 7,
+    "fp_pattern:x-frame-options": 4,
+    "fp_pattern:x-content-type-options": 2,
+    "fp_pattern:cross-domain": 2
+  },
+  "enrich_counts": {
+    "kev": 0,
+    "epss": 696,
+    "nvd": 0,
+    "exploit": 0
+  },
+  "attack_paths": 15,
+  "avg_score": 38.9,
+  "top_score": 53.5,
+  "p1_p2": 0
+}

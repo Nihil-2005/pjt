@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Wapiti — nodegoat</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f5f5f5; }
+    h1 { color: #333; }
+    .meta { color: #666; margin-bottom: 15px; }
+    .sev { padding: 3px 8px; border-radius: 4px; margin-right: 6px; font-size: 13px; }
+    .sev-critical { background: #d32f2f; color: white; }
+    .sev-high { background: #f57c00; color: white; }
+    .sev-medium { background: #fbc02d; color: #333; }
+    .sev-low { background: #7cb342; color: white; }
+    .sev-info { background: #90a4ae; color: white; }
+    table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ddd; font-size: 13px; }
+    th { background: #2196F3; color: white; position: sticky; top: 0; }
+    tr:hover { background: #f5f5f5; }
+</style>
+</head>
+<body>
+    <h1>Wapiti — nodegoat</h1>
+    <div class="meta">Generated 2026-08-15T06:12:43 · 13 findings</div>
+    <div class="meta"><span class="sev sev-high">high: 3</span> <span class="sev sev-medium">medium: 5</span> <span class="sev sev-low">low: 5</span></div>
+    <table>
+        <thead><tr><th>Severity</th><th>Category</th><th>Path</th><th>Parameter</th><th>Info</th></tr></thead>
+        <tbody>
+<tr><td>high</td><td>Cleartext Submission of Password</td><td>/login</td><td>password</td><td>Password field password sent in clear text from URL http://nodegoat:4000/login</td></tr>
+<tr><td>high</td><td>Cleartext Submission of Password</td><td>/signup</td><td>password</td><td>Password field password sent in clear text from URL http://nodegoat:4000/signup</td></tr>
+<tr><td>high</td><td>Cleartext Submission of Password</td><td>/signup</td><td>verify</td><td>Password field verify sent in clear text from URL http://nodegoat:4000/signup</td></tr>
+<tr><td>medium</td><td>Content Security Policy Configuration</td><td>/src</td><td></td><td>CSP &quot;object-src&quot; value is not safe for URL: http://nodegoat:4000/src</td></tr>
+<tr><td>medium</td><td>Content Security Policy Configuration</td><td>/src</td><td></td><td>CSP attribute &quot;base-uri&quot; is missing for URL: http://nodegoat:4000/src</td></tr>
+<tr><td>medium</td><td>Content Security Policy Configuration</td><td>/src</td><td></td><td>CSP attribute &quot;frame-ancestors&quot; is missing for URL: http://nodegoat:4000/src</td></tr>
+<tr><td>medium</td><td>Unencrypted Channels</td><td>/login</td><td></td><td>Sensitive data (POST data) was sent over an unencrypted HTTP connection to http://nodegoat:4000/login. The server did not enforce HTTPS.</td></tr>
+<tr><td>medium</td><td>Reflected Cross Site Scripting</td><td>/login</td><td>userName</td><td>Reflected Cross Site Scripting vulnerability found via injection in the parameter userName</td></tr>
+<tr><td>low</td><td>Content Security Policy Configuration</td><td>/</td><td></td><td>CSP is not set for URL: http://nodegoat:4000/</td></tr>
+<tr><td>low</td><td>Content Security Policy Configuration</td><td>/src</td><td></td><td>CSP attribute &quot;form-action&quot; is missing for URL: http://nodegoat:4000/src</td></tr>
+<tr><td>low</td><td>Clickjacking Protection</td><td>/</td><td></td><td>X-Frame-Options is not set</td></tr>
+<tr><td>low</td><td>MIME Type Confusion</td><td>/</td><td></td><td>X-Content-Type-Options is not set</td></tr>
+<tr><td>low</td><td>Unencrypted Channels</td><td>/</td><td></td><td>No HTTPS redirection for this host. All HTTP requests are served in clear text.</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
